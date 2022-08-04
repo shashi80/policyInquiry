@@ -1,7 +1,7 @@
 {
   "openapi" : "3.0.0",
   "info" : {
-    "title" : "PolicyInquiry API",
+    "title" : "Drivers & Vehicles on the Policy",
     "description" : "This is a simple API",
     "contact" : {
       "email" : "you@your-company.com"
@@ -13,20 +13,39 @@
     "version" : "1.0.0"
   },
   "servers" : [ {
+    "url" : "https://virtserver.swaggerhub.com/USAA-PolicyMgmnt/PolicyInquiry/1.0.0",
+    "description" : "SwaggerHub API Auto Mocking"
+  }, {
+    "url" : "https://virtserver.swaggerhub.com/USAA-PolicyManagmnt/PolicyInquiry/1.0.0",
+    "description" : "SwaggerHub API Auto Mocking"
+  }, {
+    "url" : "https://virtserver.swaggerhub.com/AutoPolicyMod/PolicyInquiry/1.0.0",
+    "description" : "SwaggerHub API Auto Mocking"
+  }, {
     "url" : "https://virtserver.swaggerhub.com/PolicyMod/PolicyInquiry/1.0.0",
     "description" : "SwaggerHub API Auto Mocking"
   } ],
+  "tags" : [ {
+    "name" : "admins",
+    "description" : "Secured Admin-only calls"
+  }, {
+    "name" : "developers",
+    "description" : "Operations available to regular developers"
+  }, {
+    "name" : "drivers",
+    "description" : "Drivers tag"
+  } ],
   "paths" : {
-    "/policyInquiry/{policyNumber}" : {
+    "/policy/{policyNumber}/drivers" : {
       "get" : {
-        "tags" : [ "developers" ],
-        "summary" : "Policy inquiry",
-        "description" : "By passing in the appropriate options, you can search for\navailable inventory in the system\n",
-        "operationId" : "PolicyInquiry",
+        "tags" : [ "drivers" ],
+        "summary" : "drivers listed on policy",
+        "description" : "By passing in the appropriate options, you can search for available inventory in the system",
+        "operationId" : "drivers",
         "parameters" : [ {
           "name" : "policyNumber",
           "in" : "path",
-          "description" : "pass an optional search string for looking up inventory",
+          "description" : "pass an policy number to retreive the list of drivers mentioned on the policy",
           "required" : true,
           "style" : "simple",
           "explode" : false,
@@ -40,10 +59,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "type" : "array",
-                  "items" : {
-                    "$ref" : "#/components/schemas/policy"
-                  }
+                  "$ref" : "#/components/schemas/Policy"
                 }
               }
             }
@@ -57,13 +73,58 @@
   },
   "components" : {
     "schemas" : {
-      "policy" : {
-        "required" : [ "firstName", "lastName", "policyNumber" ],
+      "Policy" : {
         "type" : "object",
         "properties" : {
-          "policyNumber" : {
+          "vehicles" : {
+            "$ref" : "#/components/schemas/Vehicles"
+          },
+          "drivers" : {
+            "$ref" : "#/components/schemas/Drivers"
+          }
+        }
+      },
+      "Vehicles" : {
+        "type" : "array",
+        "items" : {
+          "$ref" : "#/components/schemas/Vehicle"
+        }
+      },
+      "Drivers" : {
+        "type" : "array",
+        "items" : {
+          "$ref" : "#/components/schemas/Driver"
+        }
+      },
+      "Vehicle" : {
+        "required" : [ "model", "vehicleNumber", "vehicleType", "yearOfManufacture" ],
+        "type" : "object",
+        "properties" : {
+          "vehicleNumber" : {
             "type" : "string",
-            "format" : "USA-1111"
+            "format" : "TX1111"
+          },
+          "vehicleType" : {
+            "type" : "string",
+            "format" : "SUV"
+          },
+          "model" : {
+            "type" : "string",
+            "format" : "Nissan"
+          },
+          "yearOfManufacture" : {
+            "type" : "number",
+            "format" : "2016"
+          }
+        }
+      },
+      "Driver" : {
+        "required" : [ "dlNumber", "firstName", "lastName" ],
+        "type" : "object",
+        "properties" : {
+          "dlNumber" : {
+            "type" : "string",
+            "format" : "TX-1111-1222"
           },
           "firstName" : {
             "type" : "string",
