@@ -1,0 +1,80 @@
+{
+  "openapi" : "3.0.0",
+  "info" : {
+    "title" : "PolicyInquiry API",
+    "description" : "This is a simple API",
+    "contact" : {
+      "email" : "you@your-company.com"
+    },
+    "license" : {
+      "name" : "Apache 2.0",
+      "url" : "http://www.apache.org/licenses/LICENSE-2.0.html"
+    },
+    "version" : "1.0.0"
+  },
+  "servers" : [ {
+    "url" : "https://virtserver.swaggerhub.com/PolicyMod/PolicyInquiry/1.0.0",
+    "description" : "SwaggerHub API Auto Mocking"
+  } ],
+  "paths" : {
+    "/policyInquiry/{policyNumber}" : {
+      "get" : {
+        "tags" : [ "developers" ],
+        "summary" : "Policy inquiry",
+        "description" : "By passing in the appropriate options, you can search for\navailable inventory in the system\n",
+        "operationId" : "PolicyInquiry",
+        "parameters" : [ {
+          "name" : "policyNumber",
+          "in" : "path",
+          "description" : "pass an optional search string for looking up inventory",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "search results matching criteria",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : {
+                    "$ref" : "#/components/schemas/policy"
+                  }
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "bad input parameter"
+          }
+        }
+      }
+    }
+  },
+  "components" : {
+    "schemas" : {
+      "policy" : {
+        "required" : [ "firstName", "lastName", "policyNumber" ],
+        "type" : "object",
+        "properties" : {
+          "policyNumber" : {
+            "type" : "string",
+            "format" : "USA-1111"
+          },
+          "firstName" : {
+            "type" : "string",
+            "format" : "cap"
+          },
+          "lastName" : {
+            "type" : "string",
+            "format" : "gemini"
+          }
+        }
+      }
+    }
+  }
+}
