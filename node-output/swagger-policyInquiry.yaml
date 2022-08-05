@@ -1,0 +1,141 @@
+{
+  "openapi" : "3.0.0",
+  "info" : {
+    "title" : "Drivers & Vehicles on the Policy",
+    "description" : "This is a simple API",
+    "contact" : {
+      "email" : "you@your-company.com"
+    },
+    "license" : {
+      "name" : "Apache 2.0",
+      "url" : "http://www.apache.org/licenses/LICENSE-2.0.html"
+    },
+    "version" : "1.0.0"
+  },
+  "servers" : [ {
+    "url" : "https://virtserver.swaggerhub.com/USAA-PolicyMgmnt/PolicyInquiry/1.0.0",
+    "description" : "SwaggerHub API Auto Mocking"
+  }, {
+    "url" : "https://virtserver.swaggerhub.com/USAA-PolicyManagmnt/PolicyInquiry/1.0.0",
+    "description" : "SwaggerHub API Auto Mocking"
+  }, {
+    "url" : "https://virtserver.swaggerhub.com/AutoPolicyMod/PolicyInquiry/1.0.0",
+    "description" : "SwaggerHub API Auto Mocking"
+  }, {
+    "url" : "https://virtserver.swaggerhub.com/PolicyMod/PolicyInquiry/1.0.0",
+    "description" : "SwaggerHub API Auto Mocking"
+  } ],
+  "tags" : [ {
+    "name" : "admins",
+    "description" : "Secured Admin-only calls"
+  }, {
+    "name" : "developers",
+    "description" : "Operations available to regular developers"
+  }, {
+    "name" : "drivers",
+    "description" : "Drivers tag"
+  } ],
+  "paths" : {
+    "/policy/{policyNumber}/drivers" : {
+      "get" : {
+        "tags" : [ "drivers" ],
+        "summary" : "drivers listed on policy",
+        "description" : "By passing in the appropriate options, you can search for available inventory in the system",
+        "operationId" : "drivers",
+        "parameters" : [ {
+          "name" : "policyNumber",
+          "in" : "path",
+          "description" : "pass an policy number to retreive the list of drivers mentioned on the policy",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "search results matching criteria",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Policy"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "bad input parameter"
+          }
+        }
+      }
+    }
+  },
+  "components" : {
+    "schemas" : {
+      "Policy" : {
+        "type" : "object",
+        "properties" : {
+          "vehicles" : {
+            "$ref" : "#/components/schemas/Vehicles"
+          },
+          "drivers" : {
+            "$ref" : "#/components/schemas/Drivers"
+          }
+        }
+      },
+      "Vehicles" : {
+        "type" : "array",
+        "items" : {
+          "$ref" : "#/components/schemas/Vehicle"
+        }
+      },
+      "Drivers" : {
+        "type" : "array",
+        "items" : {
+          "$ref" : "#/components/schemas/Driver"
+        }
+      },
+      "Vehicle" : {
+        "required" : [ "model", "vehicleNumber", "vehicleType", "yearOfManufacture" ],
+        "type" : "object",
+        "properties" : {
+          "vehicleNumber" : {
+            "type" : "string",
+            "format" : "TX1111"
+          },
+          "vehicleType" : {
+            "type" : "string",
+            "format" : "SUV"
+          },
+          "model" : {
+            "type" : "string",
+            "format" : "Nissan"
+          },
+          "yearOfManufacture" : {
+            "type" : "number",
+            "format" : "2016"
+          }
+        }
+      },
+      "Driver" : {
+        "required" : [ "dlNumber", "firstName", "lastName" ],
+        "type" : "object",
+        "properties" : {
+          "dlNumber" : {
+            "type" : "string",
+            "format" : "TX-1111-1222"
+          },
+          "firstName" : {
+            "type" : "string",
+            "format" : "cap"
+          },
+          "lastName" : {
+            "type" : "string",
+            "format" : "gemini"
+          }
+        }
+      }
+    }
+  }
+}
