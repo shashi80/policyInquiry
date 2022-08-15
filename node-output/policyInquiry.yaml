@@ -13,16 +13,13 @@
     "version" : "1.0.0"
   },
   "servers" : [ {
-    "url" : "https://virtserver.swaggerhub.com/USAA-PolicyMgmnt/PolicyInquiry/1.0.0",
+    "url" : "https://virtserver.swaggerhub.com/USAA-APIs/PolicyInquiry/1.0.0",
     "description" : "SwaggerHub API Auto Mocking"
   }, {
-    "url" : "https://virtserver.swaggerhub.com/USAA-PolicyManagmnt/PolicyInquiry/1.0.0",
+    "url" : "https://virtserver.swaggerhub.com/USAA-APIs/PolicyInquiry/1.0.0",
     "description" : "SwaggerHub API Auto Mocking"
   }, {
-    "url" : "https://virtserver.swaggerhub.com/AutoPolicyMod/PolicyInquiry/1.0.0",
-    "description" : "SwaggerHub API Auto Mocking"
-  }, {
-    "url" : "https://virtserver.swaggerhub.com/PolicyMod/PolicyInquiry/1.0.0",
+    "url" : "https://virtserver.swaggerhub.com/USAA-APIs/PolicyInquiry/1.0.0",
     "description" : "SwaggerHub API Auto Mocking"
   } ],
   "tags" : [ {
