@@ -32,7 +32,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2022-08-15T21:05:41.677Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2022-08-16T15:39:27.860Z[GMT]")
 @RestController
 public class PolicyApiController implements PolicyApi {
 
@@ -52,7 +52,7 @@ public class PolicyApiController implements PolicyApi {
         String accept = request.getHeader("Accept");
         if (accept != null && accept.contains("application/json")) {
             try {
-                return new ResponseEntity<Policy>(objectMapper.readValue("{\n  \"vehicles\" : [ {\n    \"yearOfManufacture\" : 0.8008281904610115,\n    \"vehicleNumber\" : \"vehicleNumber\",\n    \"model\" : \"model\",\n    \"vehicleType\" : \"vehicleType\"\n  }, {\n    \"yearOfManufacture\" : 0.8008281904610115,\n    \"vehicleNumber\" : \"vehicleNumber\",\n    \"model\" : \"model\",\n    \"vehicleType\" : \"vehicleType\"\n  } ],\n  \"drivers\" : [ {\n    \"firstName\" : \"firstName\",\n    \"lastName\" : \"lastName\",\n    \"dlNumber\" : \"dlNumber\"\n  }, {\n    \"firstName\" : \"firstName\",\n    \"lastName\" : \"lastName\",\n    \"dlNumber\" : \"dlNumber\"\n  } ]\n}", Policy.class), HttpStatus.NOT_IMPLEMENTED);
+                return new ResponseEntity<Policy>(objectMapper.readValue("{\n  \"vehicles\" : [ {\n    \"yearOfManufacture\" : 0.8008281904610115,\n    \"vehicleNumber\" : \"vehicleNumber\",\n    \"model\" : \"model\",\n    \"vehicleType\" : \"vehicleType\"\n  }, {\n    \"yearOfManufacture\" : 0.8008281904610115,\n    \"vehicleNumber\" : \"vehicleNumber\",\n    \"model\" : \"model\",\n    \"vehicleType\" : \"vehicleType\"\n  } ],\n  \"drivers\" : [ {\n    \"firstName\" : \"firstName\",\n    \"lastName\" : \"lastName\",\n    \"dlNumber\" : \"dlNumber\",\n    \"dlState\" : \"dlState\"\n  }, {\n    \"firstName\" : \"firstName\",\n    \"lastName\" : \"lastName\",\n    \"dlNumber\" : \"dlNumber\",\n    \"dlState\" : \"dlState\"\n  } ]\n}", Policy.class), HttpStatus.NOT_IMPLEMENTED);
             } catch (IOException e) {
                 log.error("Couldn't serialize response for content type application/json", e);
                 return new ResponseEntity<Policy>(HttpStatus.INTERNAL_SERVER_ERROR);

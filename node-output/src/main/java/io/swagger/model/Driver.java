@@ -12,7 +12,7 @@ import javax.validation.constraints.*;
  * Driver
  */
 @Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2022-08-15T21:05:41.677Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2022-08-16T15:39:27.860Z[GMT]")
 
 
 public class Driver   {
@@ -24,6 +24,9 @@ public class Driver   {
 
   @JsonProperty("lastName")
   private String lastName = null;
+
+  @JsonProperty("dlState")
+  private String dlState = null;
 
   public Driver dlNumber(String dlNumber) {
     this.dlNumber = dlNumber;
@@ -85,6 +88,26 @@ public class Driver   {
     this.lastName = lastName;
   }
 
+  public Driver dlState(String dlState) {
+    this.dlState = dlState;
+    return this;
+  }
+
+  /**
+   * Get dlState
+   * @return dlState
+   **/
+  @Schema(required = true, description = "")
+      @NotNull
+
+    public String getDlState() {
+    return dlState;
+  }
+
+  public void setDlState(String dlState) {
+    this.dlState = dlState;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -97,12 +120,13 @@ public class Driver   {
     Driver driver = (Driver) o;
     return Objects.equals(this.dlNumber, driver.dlNumber) &&
         Objects.equals(this.firstName, driver.firstName) &&
-        Objects.equals(this.lastName, driver.lastName);
+        Objects.equals(this.lastName, driver.lastName) &&
+        Objects.equals(this.dlState, driver.dlState);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(dlNumber, firstName, lastName);
+    return Objects.hash(dlNumber, firstName, lastName, dlState);
   }
 
   @Override
@@ -113,6 +137,7 @@ public class Driver   {
     sb.append("    dlNumber: ").append(toIndentedString(dlNumber)).append("\n");
     sb.append("    firstName: ").append(toIndentedString(firstName)).append("\n");
     sb.append("    lastName: ").append(toIndentedString(lastName)).append("\n");
+    sb.append("    dlState: ").append(toIndentedString(dlState)).append("\n");
     sb.append("}");
     return sb.toString();
   }
